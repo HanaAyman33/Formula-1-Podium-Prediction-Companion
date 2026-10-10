@@ -1,0 +1,6 @@
+,train,train,train,train,train,train,val,val,val,val,val,val,test,test,test,test,test,test
+,roc_auc,pr_auc,f1,precision,recall,top3_precision,roc_auc,pr_auc,f1,precision,recall,top3_precision,roc_auc,pr_auc,f1,precision,recall,top3_precision
+model,,,,,,,,,,,,,,,,,,
+Logistic regression,0.90221,0.5744,0.57596,0.46257,0.76299,0.55776,0.93116,0.71651,0.70149,0.62252,0.80342,0.68376,0.93652,0.71627,0.64401,0.50704,0.88235,0.66667
+XGBoost,0.91044,0.60388,0.5897,0.56114,0.62132,0.5763,0.93217,0.71712,0.7094,0.7094,0.7094,0.70085,0.94106,0.72268,0.68444,0.62602,0.7549,0.66667
+Random forest,0.9265,0.65199,0.62472,0.57757,0.68024,0.60179,0.9301,0.71714,0.71186,0.70588,0.71795,0.69231,0.93777,0.71652,0.66667,0.60976,0.73529,0.65196

@@ -1,0 +1,64 @@
+{
+  "thresholds": {
+    "Logistic regression": 0.6224643092770821,
+    "XGBoost": 0.361262708902359,
+    "Random forest": 0.7208827400168404
+  },
+  "params": {
+    "Logistic regression": {
+      "C": 0.003
+    },
+    "XGBoost": {
+      "n_estimators": 150,
+      "learning_rate": 0.03,
+      "max_depth": 3,
+      "min_child_weight": 5,
+      "subsample": 0.8,
+      "colsample_bytree": 0.8
+    },
+    "Random forest": {
+      "n_estimators": 150,
+      "max_depth": 8,
+      "min_samples_leaf": 10,
+      "max_features": "sqrt"
+    }
+  },
+  "final_attempt": {
+    "lr": "tuned",
+    "xgb": "tuned",
+    "rf": "tuned"
+  },
+  "features": [
+    "grid_clean",
+    "pole",
+    "pit_lane_start",
+    "front_row",
+    "team_best_grid",
+    "grid_vs_team",
+    "quali_pos",
+    "quali_gap_pct",
+    "q1_gap_pct",
+    "grid_minus_quali",
+    "drv_podium_rate_w10",
+    "drv_finish_rel_w10",
+    "drv_career_starts",
+    "drv_career_podium_rate",
+    "team_podium_rate_w10",
+    "team_finish_rel_w10",
+    "drv_champ_pos_prev",
+    "drv_pts_share_prev",
+    "drv_wins_prev",
+    "con_champ_pos_prev",
+    "con_pts_share_prev",
+    "con_wins_prev",
+    "drv_circuit_prev_starts",
+    "drv_circuit_prev_podiums",
+    "circuit_front_row_podium_rate",
+    "field_size",
+    "season_progress",
+    "age",
+    "home_race"
+  ],
+  "primary_metric": "pr_auc",
+  "secondary_metric": "roc_auc"
+}

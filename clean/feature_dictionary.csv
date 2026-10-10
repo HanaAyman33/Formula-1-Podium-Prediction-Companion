@@ -1,0 +1,30 @@
+feature,group,definition,valid_at_cutoff_because,sources,coverage_train
+grid_clean,grid,Starting slot; pit-lane start (grid 0) mapped to the back row,grid is set after qualifying (incl. penalties),results,1.0
+pole,grid,1 if the driver starts from pole (grid_clean == 1),grid known,results,1.0
+pit_lane_start,grid,1 if the driver starts from the pit lane / no slot recorded,known when the grid is set,results,1.0
+front_row,grid,1 if grid_clean <= 2,derived from the grid,results,1.0
+team_best_grid,grid,Best grid slot of the driver's team in this race,grid of both cars known,results,1.0
+grid_vs_team,grid,grid_clean minus the team's mean grid in this race,grid known,results,1.0
+quali_pos,qualifying,Qualifying classification,qualifying ends before the cutoff,qualifying,0.3693240051691101
+quali_gap_pct,qualifying,"% slower than the fastest time of the LAST qualifying session the driver reached (Q3, else Q2, else Q1)",qualifying times known after qualifying,qualifying,0.3634864756472528
+q1_gap_pct,qualifying,% slower than the fastest Q1 time of the session,Q1 times known after qualifying,qualifying,0.3634864756472528
+grid_minus_quali,qualifying,grid - qualifying position (penalty signal),both known at the cutoff,"results, qualifying",0.3684773405819705
+drv_podium_rate_w10,driver_form,Driver's podium rate in his previous w races,past races only: shift(1) then rolling,results,0.9701884942738737
+drv_finish_rel_w10,driver_form,"Driver's mean finishing position / field size, previous w races",past races only,results,0.9701884942738737
+drv_career_starts,driver_form,Number of earlier races of the driver in the table,count of past rows,results,1.0
+drv_career_podium_rate,driver_form,Podium rate over all earlier races of the driver,"expanding mean, current race excluded",results,0.9701884942738737
+team_podium_rate_w10,constructor_form,"Team's podium rate per car, previous w races of the constructor",past races only,results,0.9886368700147052
+team_finish_rel_w10,constructor_form,"Team's mean relative finish, previous w races",past races only,results,0.9886368700147052
+drv_champ_pos_prev,standings,Driver championship position after the previous round,strictly earlier round of the same season,"driver_standings, races",0.876164163807317
+drv_pts_share_prev,standings,Driver points / leader's points after the previous round,strictly earlier round,"driver_standings, races",1.0
+drv_wins_prev,standings,Driver wins after the previous round,strictly earlier round,"driver_standings, races",1.0
+con_champ_pos_prev,standings,Constructor championship position after the previous round,strictly earlier round,"constructor_standings, races",0.8756294282785972
+con_pts_share_prev,standings,Constructor points / leader's points after the previous round,strictly earlier round,"constructor_standings, races",0.9487099505369636
+con_wins_prev,standings,Constructor wins after the previous round,strictly earlier round,"constructor_standings, races",0.9487099505369636
+drv_circuit_prev_starts,circuit_history,Driver's earlier starts at this circuit,count of past rows,"results, races",1.0
+drv_circuit_prev_podiums,circuit_history,Driver's earlier podiums at this circuit,cumulative sum minus current row,"results, races",1.0
+circuit_front_row_podium_rate,circuit_history,Share of front-row starts in the last 8 races at this circuit that ended on the podium (>= 3 past races),past races only,"results, races",0.8171204491778441
+field_size,context,Number of starters,starters known on the grid,results,1.0
+season_progress,context,round / rounds in the season,calendar is published in advance,races,1.0
+age,context,Driver age in years on race day,date of birth and race date known,"drivers, races",1.0
+home_race,context,1 if the driver's nationality maps to the circuit's country,static,"drivers, circuits, nationality_country",1.0
