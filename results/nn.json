@@ -9,6 +9,10 @@
     "lr": 0.001,
     "epochs": 8,
     "seed": 42,
+<<<<<<< Updated upstream
+=======
+    "seed_pr_auc_mean": 0.7393834965099803,
+>>>>>>> Stashed changes
     "seed_pr_auc_std": 0.0074156464635919805
   },
   "threshold": 0.7384114937517937,
