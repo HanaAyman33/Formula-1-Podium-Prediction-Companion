@@ -1,0 +1,19 @@
+{
+  "model": "Random forest",
+  "params": {
+    "n_estimators": 300,
+    "max_depth": 8,
+    "min_samples_leaf": 10,
+    "max_features": "sqrt"
+  },
+  "threshold": 0.7130295945361687,
+  "val": {
+    "roc_auc": 0.9298676969909847,
+    "pr_auc": 0.7137081242131098,
+    "f1": 0.711864406779661,
+    "precision": 0.7058823529411765,
+    "recall": 0.717948717948718,
+    "top3_precision": 0.6923076923076923,
+    "threshold": 0.7130295945361687
+  }
+}

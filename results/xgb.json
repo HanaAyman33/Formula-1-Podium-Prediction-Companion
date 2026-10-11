@@ -1,0 +1,21 @@
+{
+  "model": "XGBoost",
+  "params": {
+    "n_estimators": 300,
+    "learning_rate": 0.03,
+    "max_depth": 4,
+    "min_child_weight": 5,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8
+  },
+  "threshold": 0.7203712463378906,
+  "val": {
+    "roc_auc": 0.9342387698552083,
+    "pr_auc": 0.7211168976451084,
+    "f1": 0.7183673469387755,
+    "precision": 0.6875,
+    "recall": 0.7521367521367521,
+    "top3_precision": 0.6837606837606838,
+    "threshold": 0.7203712463378906
+  }
+}
