@@ -2,7 +2,7 @@
   "thresholds": {
     "Logistic regression": 0.6702616582499759,
     "XGBoost": 0.7203712463378906,
-    "Random forest": 0.7130295945361687
+    "Random forest": 0.7130295945361685
   },
   "params": {
     "Logistic regression": {
