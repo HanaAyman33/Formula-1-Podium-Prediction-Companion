@@ -114,9 +114,9 @@
     "threshold_rule": "F1-optimal threshold selected on validation predictions only",
     "seed": 42,
     "final_model": {
-      "final_model": "nn",
-      "label": "Shallow NN",
-      "threshold": 0.7384114937517937
+      "final_model": "logreg",
+      "label": "Logistic regression",
+      "threshold": 0.6702616582499759
     },
     "prediction_files": [
       {
@@ -220,9 +220,9 @@
     },
     {
       "metric": "threshold",
-      "mine_val": 0.6702616582499837,
+      "mine_val": 0.6702616582499761,
       "saved_val": 0.6702616582499759,
-      "abs_diff": 7.882583474838611e-15
+      "abs_diff": 2.220446049250313e-16
     }
   ],
   "ablation_leave_one_group_ci": [
@@ -234,7 +234,7 @@
       "delta_pr_auc_vs_full": -0.017000351259032542,
       "delta_pr_auc_ci_low": -0.030767237721082995,
       "delta_pr_auc_ci_high": -0.001171160888321053,
-      "val_roc_auc_removed_mean": 0.9273309136322836,
+      "val_roc_auc_removed_mean": 0.9273309136322837,
       "delta_roc_auc_vs_full": -0.005763051425151766,
       "delta_roc_auc_ci_low": -0.009994796044363066,
       "delta_roc_auc_ci_high": -0.001636684756823606
@@ -248,7 +248,7 @@
       "delta_pr_auc_ci_low": -0.026420077953123535,
       "delta_pr_auc_ci_high": 0.009068030245318413,
       "val_roc_auc_removed_mean": 0.9313507395699177,
-      "delta_roc_auc_vs_full": -0.0017432254875177078,
+      "delta_roc_auc_vs_full": -0.0017432254875178188,
       "delta_roc_auc_ci_low": -0.004098008419002519,
       "delta_roc_auc_ci_high": 0.00016990259782366672
     },
@@ -261,7 +261,7 @@
       "delta_pr_auc_ci_low": -0.026371227473533165,
       "delta_pr_auc_ci_high": 0.003501492035863269,
       "val_roc_auc_removed_mean": 0.9279943800491746,
-      "delta_roc_auc_vs_full": -0.0050995850082607985,
+      "delta_roc_auc_vs_full": -0.0050995850082609095,
       "delta_roc_auc_ci_low": -0.010861481822329017,
       "delta_roc_auc_ci_high": 0.0007222154399209698
     },
@@ -274,7 +274,7 @@
       "delta_pr_auc_ci_low": -0.021094708086522723,
       "delta_pr_auc_ci_high": 0.007717803211768321,
       "val_roc_auc_removed_mean": 0.9322353614591057,
-      "delta_roc_auc_vs_full": -0.0008586035983296769,
+      "delta_roc_auc_vs_full": -0.0008586035983297879,
       "delta_roc_auc_ci_low": -0.0029376090586906434,
       "delta_roc_auc_ci_high": 0.0009531082582081486
     },
@@ -287,7 +287,7 @@
       "delta_pr_auc_ci_low": -0.009368218434106143,
       "delta_pr_auc_ci_high": 0.0013708232310554456,
       "val_roc_auc_removed_mean": 0.9332760930934446,
-      "delta_roc_auc_vs_full": 0.00018212803600925476,
+      "delta_roc_auc_vs_full": 0.00018212803600914373,
       "delta_roc_auc_ci_low": -0.0004536096291414909,
       "delta_roc_auc_ci_high": 0.0008435160068854581
     },
@@ -300,7 +300,7 @@
       "delta_pr_auc_ci_low": -0.007442210566178003,
       "delta_pr_auc_ci_high": 0.006767449951711392,
       "val_roc_auc_removed_mean": 0.9324695260768321,
-      "delta_roc_auc_vs_full": -0.0006244389806032702,
+      "delta_roc_auc_vs_full": -0.0006244389806033812,
       "delta_roc_auc_ci_low": -0.0020299985866461478,
       "delta_roc_auc_ci_high": 0.0008160379375975384
     },
@@ -313,100 +313,9 @@
       "delta_pr_auc_ci_low": -0.0053286466961301425,
       "delta_pr_auc_ci_high": 0.00964103945058074,
       "val_roc_auc_removed_mean": 0.9333541479660201,
-      "delta_roc_auc_vs_full": 0.0002601829085847607,
+      "delta_roc_auc_vs_full": 0.00026018290858464965,
       "delta_roc_auc_ci_low": -0.0011708677084136005,
       "delta_roc_auc_ci_high": 0.001885557233085831
-    },
-    {
-      "model": "nn",
-      "group": "qualifying",
-      "n_features": 4,
-      "val_pr_auc_removed_mean": 0.7020602135550437,
-      "delta_pr_auc_vs_full": -0.011059765239125774,
-      "delta_pr_auc_ci_low": -0.018952412495526625,
-      "delta_pr_auc_ci_high": 0.02224393208634494,
-      "val_roc_auc_removed_mean": 0.9248903979497587,
-      "delta_roc_auc_vs_full": -0.004253990555360354,
-      "delta_roc_auc_ci_low": -0.00830316255370149,
-      "delta_roc_auc_ci_high": 0.002715216738096357
-    },
-    {
-      "model": "nn",
-      "group": "driver_form",
-      "n_features": 4,
-      "val_pr_auc_removed_mean": 0.7041740428258411,
-      "delta_pr_auc_vs_full": -0.008945935968328378,
-      "delta_pr_auc_ci_low": -0.014546452662573664,
-      "delta_pr_auc_ci_high": 0.02692524450456698,
-      "val_roc_auc_removed_mean": 0.9285745879353187,
-      "delta_roc_auc_vs_full": -0.0005698005698003827,
-      "delta_roc_auc_ci_low": -0.00425427075997713,
-      "delta_roc_auc_ci_high": 0.006249267497604126
-    },
-    {
-      "model": "nn",
-      "group": "context",
-      "n_features": 4,
-      "val_pr_auc_removed_mean": 0.713574080635273,
-      "delta_pr_auc_vs_full": 0.0004541018411035047,
-      "delta_pr_auc_ci_low": -0.018812847955507986,
-      "delta_pr_auc_ci_high": 0.02647932284088428,
-      "val_roc_auc_removed_mean": 0.9299561591799035,
-      "delta_roc_auc_vs_full": 0.00081177067478444,
-      "delta_roc_auc_ci_low": -0.00462483832164671,
-      "delta_roc_auc_ci_high": 0.004960301385160799
-    },
-    {
-      "model": "nn",
-      "group": "standings",
-      "n_features": 6,
-      "val_pr_auc_removed_mean": 0.7139362702667367,
-      "delta_pr_auc_vs_full": 0.0008162914725672321,
-      "delta_pr_auc_ci_low": -0.02364220774901451,
-      "delta_pr_auc_ci_high": 0.028660678403776795,
-      "val_roc_auc_removed_mean": 0.9300446213688222,
-      "delta_roc_auc_vs_full": 0.0009002328637031098,
-      "delta_roc_auc_ci_low": 7.675002183113185e-05,
-      "delta_roc_auc_ci_high": 0.007893574336132707
-    },
-    {
-      "model": "nn",
-      "group": "constructor_form",
-      "n_features": 2,
-      "val_pr_auc_removed_mean": 0.7152595633169927,
-      "delta_pr_auc_vs_full": 0.002139584522823257,
-      "delta_pr_auc_ci_low": -0.02417485131038127,
-      "delta_pr_auc_ci_high": 0.012100316289034005,
-      "val_roc_auc_removed_mean": 0.9296127177405715,
-      "delta_roc_auc_vs_full": 0.0004683292354524804,
-      "delta_roc_auc_ci_low": -0.0028539938300776724,
-      "delta_roc_auc_ci_high": 0.0031392585738898244
-    },
-    {
-      "model": "nn",
-      "group": "grid",
-      "n_features": 6,
-      "val_pr_auc_removed_mean": 0.7195863938453971,
-      "delta_pr_auc_vs_full": 0.006466415051227692,
-      "delta_pr_auc_ci_low": -0.02959037022826218,
-      "delta_pr_auc_ci_high": 0.03605969361131683,
-      "val_roc_auc_removed_mean": 0.9282493592995877,
-      "delta_roc_auc_vs_full": -0.0008950292055313058,
-      "delta_roc_auc_ci_low": -0.004443815640624227,
-      "delta_roc_auc_ci_high": 0.006610343195886818
-    },
-    {
-      "model": "nn",
-      "group": "circuit_history",
-      "n_features": 3,
-      "val_pr_auc_removed_mean": 0.7220286372787355,
-      "delta_pr_auc_vs_full": 0.008908658484566012,
-      "delta_pr_auc_ci_low": -0.02698840843376425,
-      "delta_pr_auc_ci_high": 0.037233680297578765,
-      "val_roc_auc_removed_mean": 0.9282103318632998,
-      "delta_roc_auc_vs_full": -0.0009340566418192253,
-      "delta_roc_auc_ci_low": -0.006541348110172767,
-      "delta_roc_auc_ci_high": 0.003111746193938059
     }
   ],
   "preprocessing_split_fit_scope": [
@@ -417,12 +326,12 @@
       "seed": 42,
       "split": "train",
       "roc_auc": 0.9024790421733754,
-      "pr_auc": 0.5733661044658225,
+      "pr_auc": 0.5733661044658226,
       "f1": 0.5839724940491934,
       "precision": 0.4862365117815459,
       "recall": 0.730883813306852,
       "top3_precision": 0.5587553790135716,
-      "threshold": 0.6702616582499837
+      "threshold": 0.6702616582499761
     },
     {
       "experiment": "split_fit_scope",
@@ -436,7 +345,7 @@
       "precision": 0.6546762589928058,
       "recall": 0.7777777777777778,
       "top3_precision": 0.6837606837606838,
-      "threshold": 0.6702616582499837
+      "threshold": 0.6702616582499761
     },
     {
       "experiment": "split_fit_scope",
@@ -450,7 +359,7 @@
       "precision": 0.5401234567901234,
       "recall": 0.8578431372549019,
       "top3_precision": 0.6617647058823529,
-      "threshold": 0.6702616582499837
+      "threshold": 0.6702616582499761
     },
     {
       "experiment": "split_fit_scope",
@@ -464,7 +373,7 @@
       "precision": 0.4845360824742268,
       "recall": 0.7312148295266468,
       "top3_precision": 0.5587553790135716,
-      "threshold": 0.6683700372225472
+      "threshold": 0.6683700372225464
     },
     {
       "experiment": "split_fit_scope",
@@ -478,7 +387,7 @@
       "precision": 0.65,
       "recall": 0.7777777777777778,
       "top3_precision": 0.6837606837606838,
-      "threshold": 0.6683700372225472
+      "threshold": 0.6683700372225464
     },
     {
       "experiment": "split_fit_scope",
@@ -492,7 +401,7 @@
       "precision": 0.5351681957186545,
       "recall": 0.8578431372549019,
       "top3_precision": 0.6617647058823529,
-      "threshold": 0.6683700372225472
+      "threshold": 0.6683700372225464
     }
   ],
   "preprocessing_impute_scale_order": [
@@ -503,12 +412,12 @@
       "seed": 42,
       "split": "train",
       "roc_auc": 0.9024790421733754,
-      "pr_auc": 0.5733661044658225,
+      "pr_auc": 0.5733661044658226,
       "f1": 0.5839724940491934,
       "precision": 0.4862365117815459,
       "recall": 0.730883813306852,
       "top3_precision": 0.5587553790135716,
-      "threshold": 0.6702616582499837
+      "threshold": 0.6702616582499761
     },
     {
       "experiment": "impute_scale_order",
@@ -522,7 +431,7 @@
       "precision": 0.6546762589928058,
       "recall": 0.7777777777777778,
       "top3_precision": 0.6837606837606838,
-      "threshold": 0.6702616582499837
+      "threshold": 0.6702616582499761
     },
     {
       "experiment": "impute_scale_order",
@@ -536,7 +445,7 @@
       "precision": 0.5401234567901234,
       "recall": 0.8578431372549019,
       "top3_precision": 0.6617647058823529,
-      "threshold": 0.6702616582499837
+      "threshold": 0.6702616582499761
     },
     {
       "experiment": "impute_scale_order",
@@ -550,7 +459,7 @@
       "precision": 0.4912994350282486,
       "recall": 0.7196292618338298,
       "top3_precision": 0.5574313141343926,
-      "threshold": 0.6806909131468218
+      "threshold": 0.6806909131468217
     },
     {
       "experiment": "impute_scale_order",
@@ -564,7 +473,7 @@
       "precision": 0.656934306569343,
       "recall": 0.7692307692307693,
       "top3_precision": 0.6837606837606838,
-      "threshold": 0.6806909131468218
+      "threshold": 0.6806909131468217
     },
     {
       "experiment": "impute_scale_order",
@@ -578,7 +487,7 @@
       "precision": 0.5471698113207547,
       "recall": 0.8529411764705882,
       "top3_precision": 0.6617647058823529,
-      "threshold": 0.6806909131468218
+      "threshold": 0.6806909131468217
     }
   ],
   "limitations": [
@@ -593,8 +502,8 @@
     "F1-optimal validation threshold rule",
     "reported metric set"
   ],
-  "git_status_before": "## Experiments_feat\n?? .idea/\n?? experiments.ipynb\n",
-  "git_diff_stat_before": "",
-  "git_status_after": "## Experiments_feat\n?? .idea/\n?? experiments.ipynb\n?? figures_exp/\n?? results_exp/\n",
-  "git_diff_stat_after": ""
+  "git_status_before": "## Experiments_feat...origin/Experiments_feat\n M .DS_Store\n M experiments.ipynb\n M figures_exp/ablation_delta_pr_auc_logreg.png\n M figures_exp/ablation_delta_pr_auc_nn.png\n M figures_exp/preprocess_hist_grid_clean.png\n M figures_exp/preprocess_hist_quali_pos.png\n M nn_models.ipynb\n M results/final_model.json\n M results/nn.json\n M results_exp/ablation_leave_one_group_ci.csv\n M results_exp/ablation_notes.json\n M results_exp/ablation_raw_metrics.csv\n M results_exp/ablation_summary_metrics.csv\n M results_exp/baseline_logreg_reproduction.csv\n M results_exp/discovery_summary.json\n M results_exp/existing_file_hash_check.csv\n M results_exp/final_experiment_report.json\n M results_exp/preprocessing_affected_column_stats.csv\n M results_exp/preprocessing_impute_scale_order.csv\n M results_exp/preprocessing_split_fit_scope.csv\n",
+  "git_diff_stat_before": " .DS_Store                                          |  Bin 6148 -> 6148 bytes\n experiments.ipynb                                  | 3511 ++------------------\n figures_exp/ablation_delta_pr_auc_logreg.png       |  Bin 43232 -> 38888 bytes\n figures_exp/ablation_delta_pr_auc_nn.png           |  Bin 39802 -> 37803 bytes\n figures_exp/preprocess_hist_grid_clean.png         |  Bin 42558 -> 27725 bytes\n figures_exp/preprocess_hist_quali_pos.png          |  Bin 45171 -> 36309 bytes\n nn_models.ipynb                                    |  176 +-\n results/final_model.json                           |    6 +-\n results/nn.json                                    |    1 +\n results_exp/ablation_leave_one_group_ci.csv        |   21 +-\n results_exp/ablation_notes.json                    |   66 +-\n results_exp/ablation_raw_metrics.csv               |  522 ++-\n results_exp/ablation_summary_metrics.csv           |  144 +-\n results_exp/baseline_logreg_reproduction.csv       |    2 +-\n results_exp/discovery_summary.json                 |    6 +-\n results_exp/existing_file_hash_check.csv           |   12 +-\n results_exp/final_experiment_report.json           |  151 +-\n .../preprocessing_affected_column_stats.csv        |    8 +-\n results_exp/preprocessing_impute_scale_order.csv   |   12 +-\n results_exp/preprocessing_split_fit_scope.csv      |   12 +-\n 20 files changed, 863 insertions(+), 3787 deletions(-)\n",
+  "git_status_after": "## Experiments_feat...origin/Experiments_feat\n M .DS_Store\n M experiments.ipynb\n M figures_exp/ablation_delta_pr_auc_logreg.png\n M figures_exp/ablation_delta_pr_auc_nn.png\n M figures_exp/preprocess_hist_grid_clean.png\n M figures_exp/preprocess_hist_quali_pos.png\n M nn_models.ipynb\n M results/final_model.json\n M results/nn.json\n M results_exp/ablation_leave_one_group_ci.csv\n M results_exp/ablation_notes.json\n M results_exp/ablation_raw_metrics.csv\n M results_exp/ablation_summary_metrics.csv\n M results_exp/baseline_logreg_reproduction.csv\n M results_exp/discovery_summary.json\n M results_exp/existing_file_hash_check.csv\n M results_exp/final_experiment_report.json\n M results_exp/preprocessing_affected_column_stats.csv\n M results_exp/preprocessing_impute_scale_order.csv\n M results_exp/preprocessing_split_fit_scope.csv\n",
+  "git_diff_stat_after": " .DS_Store                                          |  Bin 6148 -> 6148 bytes\n experiments.ipynb                                  | 3511 ++------------------\n figures_exp/ablation_delta_pr_auc_logreg.png       |  Bin 43232 -> 38888 bytes\n figures_exp/ablation_delta_pr_auc_nn.png           |  Bin 39802 -> 37803 bytes\n figures_exp/preprocess_hist_grid_clean.png         |  Bin 42558 -> 27725 bytes\n figures_exp/preprocess_hist_quali_pos.png          |  Bin 45171 -> 36309 bytes\n nn_models.ipynb                                    |  176 +-\n results/final_model.json                           |    6 +-\n results/nn.json                                    |    1 +\n results_exp/ablation_leave_one_group_ci.csv        |   21 +-\n results_exp/ablation_notes.json                    |   66 +-\n results_exp/ablation_raw_metrics.csv               |  522 ++-\n results_exp/ablation_summary_metrics.csv           |  144 +-\n results_exp/baseline_logreg_reproduction.csv       |    2 +-\n results_exp/discovery_summary.json                 |    6 +-\n results_exp/existing_file_hash_check.csv           |   12 +-\n results_exp/final_experiment_report.json           |  151 +-\n .../preprocessing_affected_column_stats.csv        |    8 +-\n results_exp/preprocessing_impute_scale_order.csv   |   12 +-\n results_exp/preprocessing_split_fit_scope.csv      |   12 +-\n 20 files changed, 863 insertions(+), 3787 deletions(-)\n"
 }
