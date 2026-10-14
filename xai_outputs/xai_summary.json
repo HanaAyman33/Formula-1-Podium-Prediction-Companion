@@ -4,17 +4,54 @@
   "threshold": 0.7384114937517937,
   "reference_rows": 100,
   "shap_permutations": 6,
-  "additivity_max_error": 4.893615512813199e-10,
+  "additivity_max_error": 4.893616623036223e-10,
   "base_value": 0.34616047133729133,
+  "model_verification": [
+    {
+      "key": "logreg",
+      "model": "Logistic regression",
+      "obtained_by": "saved .joblib",
+      "verdict": "PASS",
+      "val_max_diff": 4.440892098500626e-16,
+      "test_max_diff": 4.440892098500626e-16
+    },
+    {
+      "key": "nn",
+      "model": "Shallow NN",
+      "obtained_by": "saved .joblib",
+      "verdict": "PASS",
+      "val_max_diff": 2.220446049250313e-16,
+      "test_max_diff": 2.220446049250313e-16
+    },
+    {
+      "key": "rf",
+      "model": "Random forest",
+      "obtained_by": "saved .joblib",
+      "verdict": "PASS",
+      "val_max_diff": 5.551115123125783e-16,
+      "test_max_diff": 4.440892098500626e-16
+    },
+    {
+      "key": "xgb",
+      "model": "XGBoost",
+      "obtained_by": "saved .joblib",
+      "verdict": "PASS",
+      "val_max_diff": 5.960464477539063e-08,
+      "test_max_diff": 5.960464477539063e-08
+    }
+  ],
   "conclusions": [
-    "Model explained: Shallow NN (test PR-AUC 0.689, validation 0.748; rank 1 of 1 on test PR-AUC among the saved models).",
-    "Permutation importance (test): the three features whose shuffling hurts PR-AUC most are quali_pos (0.071), grid_clean (0.064), team_best_grid (0.031). 9 of 29 features are reliably used (mean drop above 2 standard deviations); the rest could be shuffled without a detectable loss.",
-    "The validation and test rankings disagree (Spearman 0.01 over the top-10 union, 6 of the top 10 shared).",
+    "Models analysed (each reproduced its saved validation and test predictions, max difference shown): Logistic regression via saved .joblib (4e-16); Shallow NN via saved .joblib (2e-16); Random forest via saved .joblib (6e-16); XGBoost via saved .joblib (6e-08).",
+    "Model explained: Shallow NN (test PR-AUC 0.689, validation 0.748; rank 4 of 4 on test PR-AUC among the saved models).",
+    "Permutation importance (test): the three features whose shuffling hurts PR-AUC most are quali_pos (0.072), grid_clean (0.060), team_best_grid (0.028). 8 of 29 features are reliably used (mean drop above 2 standard deviations); the rest could be shuffled without a detectable loss.",
+    "The validation and test rankings disagree (Spearman 0.13 over the top-10 union, 6 of the top 10 shared).",
     "By feature group, shuffling 'grid' costs the most PR-AUC (0.178); in descending order: grid (0.178), standings (0.080), qualifying (0.072), context (0.011), constructor_form (0.011), driver_form (0.010), circuit_history (-0.006).",
     "SHAP (test rows): the largest mean |SHAP| belong to grid_clean (0.059, 11% of the total), quali_pos (0.059, 11% of the total), team_best_grid (0.048, 9% of the total). By group the largest is 'grid' (29% of total group SHAP).",
-    "Permutation importance and SHAP disagree on the ranking (Spearman 0.36 over the top-10 union, 5 of the top 10 shared); a feature ranked much higher by SHAP than by permutation is one the model pushes on without that push improving test accuracy much.",
+    "Permutation importance and SHAP disagree on the ranking (Spearman 0.42 over the top-10 union, 6 of the top 10 shared); a feature ranked much higher by SHAP than by permutation is one the model pushes on without that push improving test accuracy much.",
     "The SHAP ranking is robust to the reference data (lowest pairwise Spearman across three references: 0.86; robust at 0.85 or above).",
-    "Across three retrained network seeds (and the saved model) the permutation rankings have pairwise Spearman between 0.43 and 1.00 over the top-10 union, and share at least 6 of their top 10 features: a network explanation is not stable across seeds.",
+    "Other verified models (permutation importance, test): Logistic regression top 3 = grid_clean, team_best_grid, team_finish_rel_w10; Shallow NN top 3 = quali_pos, grid_clean, team_best_grid; Random forest top 3 = grid_clean, team_best_grid, front_row; XGBoost top 3 = grid_clean, team_best_grid, team_finish_rel_w10.",
+    "Exact SHAP on the other models gives rankings that for Logistic regression agree partly with Shallow NN (Spearman 0.52 over the top-10 union, 7 of the top 10 shared); for Random forest differ from Shallow NN (Spearman 0.29 over the top-10 union, 7 of the top 10 shared); for XGBoost differ from Shallow NN (Spearman 0.17 over the top-10 union, 6 of the top 10 shared).",
+    "Across three retrained network seeds (and the saved model) the permutation rankings have pairwise Spearman between 0.42 and 1.00 over the top-10 union, and share at least 6 of their top 10 features: a network explanation is not stable across seeds.",
     "Local: SHAP and LIME share on average 3.5 of their top-5 features across the four cases, agree in sign on 90% of LIME's top-10 features, LIME's local R2 averages 0.33 and its top-5 set is 53% stable across seeds (Jaccard).",
     "None of these results are causal effects: a feature is important here only in the sense that this fitted model's scores depend on it."
   ]

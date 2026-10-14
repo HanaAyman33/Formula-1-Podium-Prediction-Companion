@@ -1,0 +1,5 @@
+key,model,obtained_by,verdict,val_max_diff,test_max_diff,attempts
+logreg,Logistic regression,saved .joblib,PASS,4.440892098500626e-16,4.440892098500626e-16,"saved .joblib: PASS (max diff val 4.4e-16, test 4.4e-16)"
+nn,Shallow NN,saved .joblib,PASS,2.220446049250313e-16,2.220446049250313e-16,"saved .joblib: PASS (max diff val 2.2e-16, test 2.2e-16)"
+rf,Random forest,saved .joblib,PASS,5.551115123125783e-16,4.440892098500626e-16,"saved .joblib: PASS (max diff val 5.6e-16, test 4.4e-16)"
+xgb,XGBoost,saved .joblib,PASS,5.960464477539063e-08,5.960464477539063e-08,"saved .joblib: PASS (max diff val 6.0e-08, test 6.0e-08)"

@@ -1,0 +1,4 @@
+model,algorithm,output_space,max_additivity_error,seconds,result
+Logistic regression,exact,log-odds,2.6645352591003757e-15,0.0,OK
+Random forest,exact,probability,6.772360450213455e-15,11.0,OK
+XGBoost,exact,log-odds (margin),5.347421392798424e-06,0.2,OK
