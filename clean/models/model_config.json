@@ -1,8 +1,8 @@
 {
   "thresholds": {
-    "Logistic regression": 0.6702616582499759,
-    "XGBoost": 0.7203712463378906,
-    "Random forest": 0.7130295945361684
+    "Logistic regression": 0.6709677970491067,
+    "XGBoost": 0.7981699109077454,
+    "Random forest": 0.7334418446257888
   },
   "params": {
     "Logistic regression": {
@@ -19,8 +19,8 @@
     "Random forest": {
       "n_estimators": 300,
       "max_depth": 8,
-      "min_samples_leaf": 10,
-      "max_features": "sqrt"
+      "min_samples_leaf": 60,
+      "max_features": 0.5
     }
   },
   "final_attempt": {

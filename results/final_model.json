@@ -1,5 +1,5 @@
 {
   "final_model": "logreg",
   "label": "Logistic regression",
-  "threshold": 0.6702616582499759
+  "threshold": 0.6709677970491067
 }
