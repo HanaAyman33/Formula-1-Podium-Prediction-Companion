@@ -1,5 +1,5 @@
 case,row,score,threshold,predicted_podium,actual_podium,grid,quali_pos,finish_position,race_status,n_missing_features
-Confident hit,"Max Verstappen, 2023 Abu Dhabi Grand Prix, Red Bull",0.995,0.738,True,1,1.0,1.0,1,Finished,0
-Missed podium,"Sergio Pérez, 2023 Austrian Grand Prix, Red Bull",0.0,0.738,False,1,15.0,15.0,3,Finished,0
-False alarm,"Max Verstappen, 2024 Austrian Grand Prix, Red Bull",0.983,0.738,True,0,1.0,1.0,5,Finished,0
-Borderline,"Carlos Sainz, 2023 Spanish Grand Prix, Ferrari",0.738,0.738,False,0,2.0,2.0,5,Finished,0
+Confident hit,"Max Verstappen, 2023 Qatar Grand Prix, Red Bull",0.985,0.67,True,1,1.0,1.0,1,Finished,1
+Missed podium,"Sergio Pérez, 2023 Austrian Grand Prix, Red Bull",0.0,0.67,False,1,15.0,15.0,3,Finished,0
+False alarm,"Max Verstappen, 2024 Austrian Grand Prix, Red Bull",0.976,0.67,True,0,1.0,1.0,5,Finished,0
+Borderline,"George Russell, 2022 Saudi Arabian Grand Prix, Mercedes",0.67,0.67,False,0,6.0,6.0,5,Finished,1

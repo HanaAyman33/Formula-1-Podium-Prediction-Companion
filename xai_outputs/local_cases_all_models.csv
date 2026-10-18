@@ -1,17 +1,17 @@
 case,row,model,score,threshold,predicts_podium,actual_podium,top3_push_up,top3_push_down
-Confident hit,"Max Verstappen, 2023 Abu Dhabi Grand Prix, Red Bull",Logistic regression,0.982,0.67,True,1,"grid_clean, drv_wins_prev, team_best_grid","q1_gap_pct, season_progress, con_wins_prev"
-Confident hit,"Max Verstappen, 2023 Abu Dhabi Grand Prix, Red Bull",Shallow NN,0.995,0.738,True,1,"drv_wins_prev, con_wins_prev, quali_pos","drv_champ_pos_prev, con_champ_pos_prev, season_progress"
-Confident hit,"Max Verstappen, 2023 Abu Dhabi Grand Prix, Red Bull",Random forest,0.974,0.713,True,1,"grid_clean, team_best_grid, drv_podium_rate_w10","season_progress, circuit_front_row_podium_rate, grid_minus_quali"
-Confident hit,"Max Verstappen, 2023 Abu Dhabi Grand Prix, Red Bull",XGBoost,0.968,0.72,True,1,"grid_clean, team_best_grid, quali_gap_pct","season_progress, circuit_front_row_podium_rate, drv_circuit_prev_starts"
-Missed podium,"Sergio Pérez, 2023 Austrian Grand Prix, Red Bull",Logistic regression,0.0,0.67,False,1,"team_best_grid, team_finish_rel_w10, team_podium_rate_w10","quali_gap_pct, grid_clean, quali_pos"
-Missed podium,"Sergio Pérez, 2023 Austrian Grand Prix, Red Bull",Shallow NN,0.0,0.738,False,1,"team_best_grid, con_wins_prev, grid_vs_team","quali_gap_pct, grid_clean, quali_pos"
+Confident hit,"Max Verstappen, 2023 Qatar Grand Prix, Red Bull",Logistic regression,0.985,0.67,True,1,"grid_clean, team_best_grid, drv_podium_rate_w10","q1_gap_pct, season_progress, con_wins_prev"
+Confident hit,"Max Verstappen, 2023 Qatar Grand Prix, Red Bull",Shallow NN,0.985,0.738,True,1,n/a,n/a
+Confident hit,"Max Verstappen, 2023 Qatar Grand Prix, Red Bull",Random forest,0.969,0.713,True,1,"grid_clean, team_best_grid, drv_podium_rate_w10","season_progress, drv_circuit_prev_starts, circuit_front_row_podium_rate"
+Confident hit,"Max Verstappen, 2023 Qatar Grand Prix, Red Bull",XGBoost,0.966,0.72,True,1,"grid_clean, team_best_grid, quali_gap_pct","season_progress, drv_circuit_prev_podiums, pole"
+Missed podium,"Sergio Pérez, 2023 Austrian Grand Prix, Red Bull",Logistic regression,0.0,0.67,False,1,"team_best_grid, team_podium_rate_w10, team_finish_rel_w10","quali_gap_pct, grid_clean, quali_pos"
+Missed podium,"Sergio Pérez, 2023 Austrian Grand Prix, Red Bull",Shallow NN,0.0,0.738,False,1,n/a,n/a
 Missed podium,"Sergio Pérez, 2023 Austrian Grand Prix, Red Bull",Random forest,0.562,0.713,False,1,"drv_podium_rate_w10, team_best_grid, team_podium_rate_w10","grid_clean, grid_vs_team, front_row"
 Missed podium,"Sergio Pérez, 2023 Austrian Grand Prix, Red Bull",XGBoost,0.511,0.72,False,1,"team_podium_rate_w10, drv_podium_rate_w10, team_best_grid","grid_clean, quali_gap_pct, grid_vs_team"
 False alarm,"Max Verstappen, 2024 Austrian Grand Prix, Red Bull",Logistic regression,0.976,0.67,True,0,"grid_clean, team_best_grid, drv_podium_rate_w10","q1_gap_pct, circuit_front_row_podium_rate, drv_circuit_prev_starts"
-False alarm,"Max Verstappen, 2024 Austrian Grand Prix, Red Bull",Shallow NN,0.983,0.738,True,0,"grid_clean, drv_pts_share_prev, con_wins_prev","drv_champ_pos_prev, con_champ_pos_prev, drv_finish_rel_w10"
+False alarm,"Max Verstappen, 2024 Austrian Grand Prix, Red Bull",Shallow NN,0.983,0.738,True,0,n/a,n/a
 False alarm,"Max Verstappen, 2024 Austrian Grand Prix, Red Bull",Random forest,0.969,0.713,True,0,"grid_clean, team_best_grid, drv_podium_rate_w10","circuit_front_row_podium_rate, drv_circuit_prev_starts, season_progress"
 False alarm,"Max Verstappen, 2024 Austrian Grand Prix, Red Bull",XGBoost,0.965,0.72,True,0,"grid_clean, team_best_grid, quali_gap_pct","age, drv_circuit_prev_starts, circuit_front_row_podium_rate"
-Borderline,"Carlos Sainz, 2023 Spanish Grand Prix, Ferrari",Logistic regression,0.792,0.67,True,0,"grid_clean, team_best_grid, quali_pos","q1_gap_pct, drv_career_podium_rate, home_race"
-Borderline,"Carlos Sainz, 2023 Spanish Grand Prix, Ferrari",Shallow NN,0.738,0.738,False,0,"quali_pos, grid_clean, team_best_grid","home_race, drv_champ_pos_prev, con_wins_prev"
-Borderline,"Carlos Sainz, 2023 Spanish Grand Prix, Ferrari",Random forest,0.775,0.713,True,0,"grid_clean, team_best_grid, front_row","drv_podium_rate_w10, con_wins_prev, drv_wins_prev"
-Borderline,"Carlos Sainz, 2023 Spanish Grand Prix, Ferrari",XGBoost,0.836,0.72,True,0,"grid_clean, team_best_grid, quali_gap_pct","drv_podium_rate_w10, drv_career_podium_rate, q1_gap_pct"
+Borderline,"George Russell, 2022 Saudi Arabian Grand Prix, Mercedes",Logistic regression,0.67,0.67,False,0,"grid_clean, team_podium_rate_w10, team_finish_rel_w10","drv_career_podium_rate, drv_podium_rate_w10, q1_gap_pct"
+Borderline,"George Russell, 2022 Saudi Arabian Grand Prix, Mercedes",Shallow NN,0.701,0.738,False,0,n/a,n/a
+Borderline,"George Russell, 2022 Saudi Arabian Grand Prix, Mercedes",Random forest,0.439,0.713,False,0,"team_podium_rate_w10, grid_clean, drv_champ_pos_prev","drv_podium_rate_w10, drv_career_podium_rate, team_best_grid"
+Borderline,"George Russell, 2022 Saudi Arabian Grand Prix, Mercedes",XGBoost,0.48,0.72,False,0,"grid_clean, team_podium_rate_w10, age","drv_career_podium_rate, drv_finish_rel_w10, team_best_grid"
