@@ -1,0 +1,182 @@
+{
+  "modeling_shape": [
+    24566,
+    55
+  ],
+  "target": "podium",
+  "features": [
+    "grid_clean",
+    "pole",
+    "pit_lane_start",
+    "front_row",
+    "team_best_grid",
+    "grid_vs_team",
+    "quali_pos",
+    "quali_gap_pct",
+    "q1_gap_pct",
+    "grid_minus_quali",
+    "drv_podium_rate_w10",
+    "drv_finish_rel_w10",
+    "drv_career_starts",
+    "drv_career_podium_rate",
+    "team_podium_rate_w10",
+    "team_finish_rel_w10",
+    "drv_champ_pos_prev",
+    "drv_pts_share_prev",
+    "drv_wins_prev",
+    "con_champ_pos_prev",
+    "con_pts_share_prev",
+    "con_wins_prev",
+    "drv_circuit_prev_starts",
+    "drv_circuit_prev_podiums",
+    "circuit_front_row_podium_rate",
+    "field_size",
+    "season_progress",
+    "age",
+    "home_race"
+  ],
+  "groups": {
+    "grid": [
+      "grid_clean",
+      "pole",
+      "pit_lane_start",
+      "front_row",
+      "team_best_grid",
+      "grid_vs_team"
+    ],
+    "qualifying": [
+      "quali_pos",
+      "quali_gap_pct",
+      "q1_gap_pct",
+      "grid_minus_quali"
+    ],
+    "driver_form": [
+      "drv_podium_rate_w10",
+      "drv_finish_rel_w10",
+      "drv_career_starts",
+      "drv_career_podium_rate"
+    ],
+    "constructor_form": [
+      "team_podium_rate_w10",
+      "team_finish_rel_w10"
+    ],
+    "standings": [
+      "drv_champ_pos_prev",
+      "drv_pts_share_prev",
+      "drv_wins_prev",
+      "con_champ_pos_prev",
+      "con_pts_share_prev",
+      "con_wins_prev"
+    ],
+    "circuit_history": [
+      "drv_circuit_prev_starts",
+      "drv_circuit_prev_podiums",
+      "circuit_front_row_podium_rate"
+    ],
+    "context": [
+      "field_size",
+      "season_progress",
+      "age",
+      "home_race"
+    ]
+  },
+  "split_summary": [
+    {
+      "split": "train",
+      "rows": 22441,
+      "races": 1007,
+      "first_year": 1950,
+      "last_year": 2019,
+      "podiums": 3021,
+      "podium_rate": 0.13461966935519806
+    },
+    {
+      "split": "val",
+      "rows": 774,
+      "races": 39,
+      "first_year": 2020,
+      "last_year": 2021,
+      "podiums": 117,
+      "podium_rate": 0.1511627906976744
+    },
+    {
+      "split": "test",
+      "rows": 1351,
+      "races": 68,
+      "first_year": 2022,
+      "last_year": 2024,
+      "podiums": 204,
+      "podium_rate": 0.15099925980754997
+    }
+  ],
+  "preprocessing": "median imputation with missing indicators, then StandardScaler for continuous features; binary features are median-imputed with indicators; fit on training rows only",
+  "threshold_rule": "F1-optimal threshold selected on validation predictions only",
+  "seed": 42,
+  "final_model": {
+    "final_model": "logreg",
+    "label": "Logistic regression",
+    "threshold": 0.6702616582499759
+  },
+  "prediction_files": [
+    {
+      "file": "logreg_preds.parquet",
+      "rows": 2125,
+      "columns": [
+        "resultId",
+        "raceId",
+        "split",
+        "podium",
+        "p"
+      ],
+      "split_counts": {
+        "test": 1351,
+        "val": 774
+      }
+    },
+    {
+      "file": "nn_preds.parquet",
+      "rows": 2125,
+      "columns": [
+        "resultId",
+        "raceId",
+        "split",
+        "podium",
+        "p"
+      ],
+      "split_counts": {
+        "test": 1351,
+        "val": 774
+      }
+    },
+    {
+      "file": "rf_preds.parquet",
+      "rows": 2125,
+      "columns": [
+        "resultId",
+        "raceId",
+        "split",
+        "podium",
+        "p"
+      ],
+      "split_counts": {
+        "test": 1351,
+        "val": 774
+      }
+    },
+    {
+      "file": "xgb_preds.parquet",
+      "rows": 2125,
+      "columns": [
+        "resultId",
+        "raceId",
+        "split",
+        "podium",
+        "p"
+      ],
+      "split_counts": {
+        "test": 1351,
+        "val": 774
+      }
+    }
+  ]
+}
