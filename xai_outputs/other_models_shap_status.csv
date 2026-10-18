@@ -1,4 +1,4 @@
 model,algorithm,output_space,max_additivity_error,seconds,result
-Shallow NN,permutation (sampled),probability,3.528696224108785e-10,36.4,OK
-Random forest,exact,probability,8.326672684688674e-15,3.6,OK
-XGBoost,exact,log-odds (margin),4.4067855924367905e-06,0.1,OK
+Shallow NN,-,-,,0.0,not run: NotImplementedError: no exact SHAP algorithm wired for MLPClassifier
+Random forest,exact,probability,8.215650382226158e-15,5.4,OK
+XGBoost,exact,log-odds (margin),4.573259502649307e-06,0.1,OK
