@@ -2,16 +2,16 @@ case,row,model,score,threshold,predicts_podium,actual_podium,top3_push_up,top3_p
 Confident hit,"Max Verstappen, 2023 Qatar Grand Prix, Red Bull",Logistic regression,0.985,0.671,True,1,"grid_clean, team_best_grid, drv_podium_rate_w10","q1_gap_pct, season_progress, con_wins_prev"
 Confident hit,"Max Verstappen, 2023 Qatar Grand Prix, Red Bull",Shallow NN,0.984,0.793,True,1,n/a,n/a
 Confident hit,"Max Verstappen, 2023 Qatar Grand Prix, Red Bull",Random forest,0.972,0.733,True,1,"grid_clean, team_best_grid, drv_podium_rate_w10","season_progress, drv_circuit_prev_starts, grid_minus_quali"
-Confident hit,"Max Verstappen, 2023 Qatar Grand Prix, Red Bull",XGBoost,0.966,0.798,True,1,"grid_clean, team_best_grid, quali_gap_pct","season_progress, drv_circuit_prev_podiums, pole"
+Confident hit,"Max Verstappen, 2023 Qatar Grand Prix, Red Bull",XGBoost,0.967,0.785,True,1,"grid_clean, team_best_grid, quali_gap_pct","drv_finish_rel_w10, season_progress, drv_circuit_prev_podiums"
 Missed podium,"Pierre Gasly, 2024 São Paulo Grand Prix, Alpine F1 Team",Logistic regression,0.038,0.671,False,1,"team_best_grid, field_size, drv_career_starts","grid_clean, quali_gap_pct, quali_pos"
 Missed podium,"Pierre Gasly, 2024 São Paulo Grand Prix, Alpine F1 Team",Shallow NN,0.003,0.793,False,1,n/a,n/a
 Missed podium,"Pierre Gasly, 2024 São Paulo Grand Prix, Alpine F1 Team",Random forest,0.071,0.733,False,1,"team_best_grid, field_size, drv_career_starts","grid_clean, team_podium_rate_w10, drv_podium_rate_w10"
-Missed podium,"Pierre Gasly, 2024 São Paulo Grand Prix, Alpine F1 Team",XGBoost,0.031,0.798,False,1,"team_best_grid, field_size, drv_career_starts","grid_clean, team_finish_rel_w10, quali_gap_pct"
+Missed podium,"Pierre Gasly, 2024 São Paulo Grand Prix, Alpine F1 Team",XGBoost,0.024,0.785,False,1,"team_best_grid, field_size, drv_career_starts","grid_clean, quali_gap_pct, drv_finish_rel_w10"
 False alarm,"Max Verstappen, 2024 Austrian Grand Prix, Red Bull",Logistic regression,0.976,0.671,True,0,"grid_clean, team_best_grid, drv_podium_rate_w10","q1_gap_pct, circuit_front_row_podium_rate, drv_circuit_prev_starts"
 False alarm,"Max Verstappen, 2024 Austrian Grand Prix, Red Bull",Shallow NN,0.983,0.793,True,0,n/a,n/a
 False alarm,"Max Verstappen, 2024 Austrian Grand Prix, Red Bull",Random forest,0.974,0.733,True,0,"grid_clean, team_best_grid, drv_podium_rate_w10","circuit_front_row_podium_rate, drv_circuit_prev_starts, season_progress"
-False alarm,"Max Verstappen, 2024 Austrian Grand Prix, Red Bull",XGBoost,0.965,0.798,True,0,"grid_clean, team_best_grid, quali_gap_pct","age, drv_circuit_prev_starts, circuit_front_row_podium_rate"
+False alarm,"Max Verstappen, 2024 Austrian Grand Prix, Red Bull",XGBoost,0.963,0.785,True,0,"grid_clean, team_best_grid, quali_gap_pct","age, circuit_front_row_podium_rate, season_progress"
 Borderline,"George Russell, 2022 Saudi Arabian Grand Prix, Mercedes",Logistic regression,0.67,0.671,False,0,"grid_clean, team_finish_rel_w10, team_podium_rate_w10","drv_career_podium_rate, drv_podium_rate_w10, q1_gap_pct"
 Borderline,"George Russell, 2022 Saudi Arabian Grand Prix, Mercedes",Shallow NN,0.679,0.793,False,0,n/a,n/a
-Borderline,"George Russell, 2022 Saudi Arabian Grand Prix, Mercedes",Random forest,0.479,0.733,False,0,"grid_clean, team_podium_rate_w10, drv_pts_share_prev","drv_podium_rate_w10, team_best_grid, drv_career_podium_rate"
-Borderline,"George Russell, 2022 Saudi Arabian Grand Prix, Mercedes",XGBoost,0.517,0.798,False,0,"grid_clean, team_podium_rate_w10, age","drv_career_podium_rate, drv_finish_rel_w10, team_best_grid"
+Borderline,"George Russell, 2022 Saudi Arabian Grand Prix, Mercedes",Random forest,0.481,0.733,False,0,"grid_clean, team_podium_rate_w10, drv_pts_share_prev","drv_podium_rate_w10, team_best_grid, drv_career_podium_rate"
+Borderline,"George Russell, 2022 Saudi Arabian Grand Prix, Mercedes",XGBoost,0.424,0.785,False,0,"grid_clean, team_podium_rate_w10, drv_champ_pos_prev","drv_finish_rel_w10, team_best_grid, drv_career_podium_rate"

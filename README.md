@@ -19,3 +19,13 @@ ACL course project (GUC). The goal is to predict whether a driver finishes on th
 | Result rows | 26,759 | 24,566 |
 | Races | 1,125 | 1,114 |
  
+
+
+## How To Run
+
+1. Select a kernel, then chose the enviroment .venv-duplicate
+2. Run pip install -r requirements.txt
+3. Run pip install ipykernel
+4. Run main.ipynb
+
+The models were already computed in /results
