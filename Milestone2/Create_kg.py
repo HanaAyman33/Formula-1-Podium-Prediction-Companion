@@ -46,9 +46,13 @@ CONSTRAINTS = [
     ("PitStop", "eventId"),
 ]
 
+def load_seasons(session):
+    with open("seasons.csv", encoding="utf-8") as f:
+        rows = [{"year": to_int(r["year"])} for r in csv.DictReader(f)]
+    run_batches(session, "UNWIND $rows AS row MERGE (s:Season {year: row.year})", rows)
 
 def load_entities(session):
-    pass
+    load_seasons(session)
 
 
 def load_results(session):
