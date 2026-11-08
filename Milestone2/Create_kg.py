@@ -51,8 +51,17 @@ def load_seasons(session):
         rows = [{"year": to_int(r["year"])} for r in csv.DictReader(f)]
     run_batches(session, "UNWIND $rows AS row MERGE (s:Season {year: row.year})", rows)
 
+def load_status(session):
+    with open("status.csv", encoding="utf-8") as f:
+        rows = [{"statusId": to_int(r["statusId"]), "status": r["status"]}
+                for r in csv.DictReader(f)]
+    run_batches(session,
+                "UNWIND $rows AS row MERGE (s:Status {statusId: row.statusId}) SET s.status = row.status",
+                rows)
+
 def load_entities(session):
     load_seasons(session)
+    load_status(session)
 
 
 def load_results(session):
