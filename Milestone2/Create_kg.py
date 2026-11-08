@@ -96,12 +96,32 @@ def load_constructors(session):
                 "UNWIND $rows AS row MERGE (c:Constructor {constructorId: row.constructorId}) SET c += row",
                 rows)
 
+def load_drivers(session):
+    with open(csv_path("drivers.csv"), encoding="utf-8") as f:
+        rows = [clean({
+            "driverId": to_int(r["driverId"]),
+            "driverRef": r["driverRef"],
+            "number": to_int(r["number"]),
+            "code": None if is_missing(r["code"]) else r["code"],
+            "forename": r["forename"],
+            "surname": r["surname"],
+            "dob": to_date(r["dob"]),
+            "nationality": r["nationality"],
+        }) for r in csv.DictReader(f)]
+    run_batches(session,
+                "UNWIND $rows AS row MERGE (d:Driver {driverId: row.driverId}) SET d += row",
+                rows)
+
+
+
 def load_entities(session):
     load_seasons(session)
     load_status(session)
     load_circuits(session)
     load_constructors(session)
+    load_drivers(session)
 
+    
 def load_results(session):
     pass
 
