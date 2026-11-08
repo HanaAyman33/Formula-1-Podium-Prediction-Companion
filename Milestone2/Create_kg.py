@@ -11,7 +11,8 @@ def csv_path(name):
 def read_config(path=None):
     path = path or csv_path("config.txt")
     cfg = {}
-    with open(path, encoding="utf-8") as f:
+    # utf-8-sig drops the BOM that Windows Notepad adds, so the first key stays "URI"
+    with open(path, encoding="utf-8-sig") as f:
         for line in f:
             if "=" in line:
                 k, v = line.strip().split("=", 1)
@@ -35,13 +36,24 @@ def to_date(v):
     return None if is_missing(v) else date.fromisoformat(v)
 
 
+def to_str(v):
+    # for text and time columns (q1, duration, fastestLapTime, ...): kept as strings, missing -> omitted
+    return None if is_missing(v) else v
+
+
+def read_rows(name):
+    with open(csv_path(name), encoding="utf-8", newline="") as f:
+        return list(csv.DictReader(f))
+
+
 def clean(d):
     return {k: v for k, v in d.items() if v is not None}
 
 
 def run_batches(session, query, rows, size=1000):
     for i in range(0, len(rows), size):
-        session.run(query, rows=rows[i:i + size])
+        # consume() waits for the batch to finish, so any Cypher error is raised here
+        session.run(query, rows=rows[i:i + size]).consume()
 
 
 CONSTRAINTS = [
@@ -102,7 +114,7 @@ def load_drivers(session):
             "driverId": to_int(r["driverId"]),
             "driverRef": r["driverRef"],
             "number": to_int(r["number"]),
-            "code": None if is_missing(r["code"]) else r["code"],
+            "code": to_str(r["code"]),
             "forename": r["forename"],
             "surname": r["surname"],
             "dob": to_date(r["dob"]),
@@ -122,7 +134,7 @@ def load_races(session):
         "round": to_int(r["round"]),
         "name": r["name"],
         "date": to_date(r["date"]),
-        "time": None if is_missing(r["time"]) else r["time"],
+        "time": to_str(r["time"]),
     }) for r in raw]
     run_batches(session,
                 "UNWIND $rows AS row MERGE (r:Race {raceId: row.raceId}) SET r += row",
@@ -151,7 +163,47 @@ def load_entities(session):
     load_races(session)
 
 def load_results(session):
-    pass
+    raw = read_rows("results.csv")
+
+    # 1) Result fact nodes: one per row, missing values (\N) are left out by clean()
+    nodes = [clean({
+        "resultId": to_int(r["resultId"]),
+        "number": to_int(r["number"]),
+        "grid": to_int(r["grid"]),
+        "position": to_int(r["position"]),
+        "positionText": to_str(r["positionText"]),
+        "positionOrder": to_int(r["positionOrder"]),
+        "points": to_float(r["points"]),
+        "laps": to_int(r["laps"]),
+        "time": to_str(r["time"]),
+        "milliseconds": to_int(r["milliseconds"]),
+        "fastestLap": to_int(r["fastestLap"]),
+        "rank": to_int(r["rank"]),
+        "fastestLapTime": to_str(r["fastestLapTime"]),
+        "fastestLapSpeed": to_float(r["fastestLapSpeed"]),
+    }) for r in raw]
+    run_batches(session,
+                "UNWIND $rows AS row MERGE (res:Result {resultId: row.resultId}) SET res += row",
+                nodes)
+
+    # 2) the four links; the foreign keys are only used to find the parents, not stored on the node
+    links = [{"resultId": to_int(r["resultId"]),
+              "raceId": to_int(r["raceId"]),
+              "driverId": to_int(r["driverId"]),
+              "constructorId": to_int(r["constructorId"]),
+              "statusId": to_int(r["statusId"])} for r in raw]
+    run_batches(session,
+                "UNWIND $rows AS row "
+                "MATCH (res:Result {resultId: row.resultId}) "
+                "MATCH (r:Race {raceId: row.raceId}) "
+                "MATCH (d:Driver {driverId: row.driverId}) "
+                "MATCH (c:Constructor {constructorId: row.constructorId}) "
+                "MATCH (s:Status {statusId: row.statusId}) "
+                "MERGE (res)-[:FOR_RACE]->(r) "
+                "MERGE (res)-[:BY_DRIVER]->(d) "
+                "MERGE (res)-[:FOR_CONSTRUCTOR]->(c) "
+                "MERGE (res)-[:HAS_STATUS]->(s)",
+                links)
 
 
 def load_qualifying(session):
@@ -165,14 +217,20 @@ def load_pitstops(session):
 def main():
     cfg = read_config()
     driver = GraphDatabase.driver(cfg["URI"], auth=(cfg["USERNAME"], cfg["PASSWORD"]))
-    with driver.session(database=cfg.get("DATABASE")) as session:
-        for label, prop in CONSTRAINTS:
-            session.run(f"CREATE CONSTRAINT IF NOT EXISTS FOR (n:{label}) REQUIRE n.{prop} IS UNIQUE")
-        load_entities(session)
-        load_results(session)
-        load_qualifying(session)
-        load_pitstops(session)
-    driver.close()
+    try:
+        driver.verify_connectivity()
+        # DATABASE is optional: grading's config.txt has it, ours may not (None = server default)
+        with driver.session(database=cfg.get("DATABASE") or None) as session:
+            for label, prop in CONSTRAINTS:
+                session.run(f"CREATE CONSTRAINT IF NOT EXISTS FOR (n:{label}) "
+                            f"REQUIRE n.{prop} IS UNIQUE").consume()
+            # parents first, then the facts that link to them
+            load_entities(session)
+            load_results(session)
+            load_qualifying(session)
+            load_pitstops(session)
+    finally:
+        driver.close()
 
 
 if __name__ == "__main__":
