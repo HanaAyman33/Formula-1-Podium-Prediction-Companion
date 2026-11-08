@@ -112,7 +112,35 @@ def load_drivers(session):
                 "UNWIND $rows AS row MERGE (d:Driver {driverId: row.driverId}) SET d += row",
                 rows)
 
+def load_races(session):
+    with open(csv_path("races.csv"), encoding="utf-8") as f:
+        raw = list(csv.DictReader(f))
 
+    nodes = [clean({
+        "raceId": to_int(r["raceId"]),
+        "year": to_int(r["year"]),
+        "round": to_int(r["round"]),
+        "name": r["name"],
+        "date": to_date(r["date"]),
+        "time": None if is_missing(r["time"]) else r["time"],
+    }) for r in raw]
+    run_batches(session,
+                "UNWIND $rows AS row MERGE (r:Race {raceId: row.raceId}) SET r += row",
+                nodes)
+
+    links = [{"raceId": to_int(r["raceId"]),
+              "circuitId": to_int(r["circuitId"]),
+              "year": to_int(r["year"])} for r in raw]
+    run_batches(session,
+                "UNWIND $rows AS row "
+                "MATCH (r:Race {raceId: row.raceId}), (c:Circuit {circuitId: row.circuitId}) "
+                "MERGE (r)-[:AT_CIRCUIT]->(c)",
+                links)
+    run_batches(session,
+                "UNWIND $rows AS row "
+                "MATCH (r:Race {raceId: row.raceId}), (s:Season {year: row.year}) "
+                "MERGE (r)-[:IN_SEASON]->(s)",
+                links)
 
 def load_entities(session):
     load_seasons(session)
@@ -120,8 +148,8 @@ def load_entities(session):
     load_circuits(session)
     load_constructors(session)
     load_drivers(session)
+    load_races(session)
 
-    
 def load_results(session):
     pass
 
