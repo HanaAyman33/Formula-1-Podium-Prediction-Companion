@@ -58,10 +58,26 @@ def load_status(session):
     run_batches(session,
                 "UNWIND $rows AS row MERGE (s:Status {statusId: row.statusId}) SET s.status = row.status",
                 rows)
-
+def load_circuits(session):
+    with open("circuits.csv", encoding="utf-8") as f:
+        rows = [clean({
+            "circuitId": to_int(r["circuitId"]),
+            "circuitRef": r["circuitRef"],
+            "circuit_name": r["name"],
+            "circuit_loc": r["location"],
+            "circuit_country": r["country"],
+            "lat": to_float(r["lat"]),
+            "lng": to_float(r["lng"]),
+            "alt": to_int(r["alt"]),
+        }) for r in csv.DictReader(f)]
+    run_batches(session,
+                "UNWIND $rows AS row MERGE (c:Circuit {circuitId: row.circuitId}) SET c += row",
+                rows)
+    
 def load_entities(session):
     load_seasons(session)
     load_status(session)
+    load_circuits(session)
 
 
 def load_results(session):
