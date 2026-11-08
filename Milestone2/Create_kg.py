@@ -84,12 +84,23 @@ def load_circuits(session):
                 "UNWIND $rows AS row MERGE (c:Circuit {circuitId: row.circuitId}) SET c += row",
                 rows)
 
+def load_constructors(session):
+    with open(csv_path("constructors.csv"), encoding="utf-8") as f:
+        rows = [clean({
+            "constructorId": to_int(r["constructorId"]),
+            "constructorRef": r["constructorRef"],
+            "constructor_name": r["name"],
+            "constructor_nationality": r["nationality"],
+        }) for r in csv.DictReader(f)]
+    run_batches(session,
+                "UNWIND $rows AS row MERGE (c:Constructor {constructorId: row.constructorId}) SET c += row",
+                rows)
 
 def load_entities(session):
     load_seasons(session)
     load_status(session)
     load_circuits(session)
-
+    load_constructors(session)
 
 def load_results(session):
     pass
