@@ -1,9 +1,15 @@
+import os
 import csv
 from datetime import date
 from neo4j import GraphDatabase
 
 
-def read_config(path="config.txt"):
+def csv_path(name):
+    return os.path.join(os.path.dirname(os.path.abspath(__file__)), name)
+
+
+def read_config(path=None):
+    path = path or csv_path("config.txt")
     cfg = {}
     with open(path, encoding="utf-8") as f:
         for line in f:
@@ -46,20 +52,24 @@ CONSTRAINTS = [
     ("PitStop", "eventId"),
 ]
 
+
 def load_seasons(session):
-    with open("seasons.csv", encoding="utf-8") as f:
+    with open(csv_path("seasons.csv"), encoding="utf-8") as f:
         rows = [{"year": to_int(r["year"])} for r in csv.DictReader(f)]
     run_batches(session, "UNWIND $rows AS row MERGE (s:Season {year: row.year})", rows)
 
+
 def load_status(session):
-    with open("status.csv", encoding="utf-8") as f:
+    with open(csv_path("status.csv"), encoding="utf-8") as f:
         rows = [{"statusId": to_int(r["statusId"]), "status": r["status"]}
                 for r in csv.DictReader(f)]
     run_batches(session,
                 "UNWIND $rows AS row MERGE (s:Status {statusId: row.statusId}) SET s.status = row.status",
                 rows)
+
+
 def load_circuits(session):
-    with open("circuits.csv", encoding="utf-8") as f:
+    with open(csv_path("circuits.csv"), encoding="utf-8") as f:
         rows = [clean({
             "circuitId": to_int(r["circuitId"]),
             "circuitRef": r["circuitRef"],
@@ -73,7 +83,8 @@ def load_circuits(session):
     run_batches(session,
                 "UNWIND $rows AS row MERGE (c:Circuit {circuitId: row.circuitId}) SET c += row",
                 rows)
-    
+
+
 def load_entities(session):
     load_seasons(session)
     load_status(session)
