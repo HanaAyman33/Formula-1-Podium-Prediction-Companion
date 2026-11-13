@@ -207,11 +207,60 @@ def load_results(session):
 
 
 def load_qualifying(session):
-    pass
+    raw = read_rows("qualifying.csv")
+    nodes = [clean({
+        "qualifyId": to_int(r["qualifyId"]),
+        "number": to_int(r["number"]),
+        "position": to_int(r["position"]),
+        "q1": to_str(r["q1"]),
+        "q2": to_str(r["q2"]),
+        "q3": to_str(r["q3"]),
+    }) for r in raw]
+    run_batches(session,
+                "UNWIND $rows AS row MERGE (q:Qualifying {qualifyId: row.qualifyId}) SET q += row",
+                nodes)
+
+    links = [{"qualifyId": to_int(r["qualifyId"]),
+              "raceId": to_int(r["raceId"]),
+              "driverId": to_int(r["driverId"]),
+              "constructorId": to_int(r["constructorId"])} for r in raw]
+    run_batches(session,
+                "UNWIND $rows AS row "
+                "MATCH (q:Qualifying {qualifyId: row.qualifyId}) "
+                "MATCH (r:Race {raceId: row.raceId}) "
+                "MATCH (d:Driver {driverId: row.driverId}) "
+                "MATCH (c:Constructor {constructorId: row.constructorId}) "
+                "MERGE (q)-[:FOR_RACE]->(r) "
+                "MERGE (q)-[:BY_DRIVER]->(d) "
+                "MERGE (q)-[:FOR_CONSTRUCTOR]->(c)",
+                links)
 
 
 def load_pitstops(session):
-    pass
+    raw = read_rows("pit_stops.csv")
+    nodes = [clean({
+        "eventId": f'{to_int(r["raceId"])}:{to_int(r["driverId"])}:{to_int(r["stop"])}',
+        "stop": to_int(r["stop"]),
+        "lap": to_int(r["lap"]),
+        "time": to_str(r["time"]),
+        "duration": to_str(r["duration"]),
+        "milliseconds": to_int(r["milliseconds"]),
+    }) for r in raw]
+    run_batches(session,
+                "UNWIND $rows AS row MERGE (p:PitStop {eventId: row.eventId}) SET p += row",
+                nodes)
+
+    links = [{"eventId": node["eventId"],
+              "raceId": to_int(r["raceId"]),
+              "driverId": to_int(r["driverId"])} for r, node in zip(raw, nodes)]
+    run_batches(session,
+                "UNWIND $rows AS row "
+                "MATCH (p:PitStop {eventId: row.eventId}) "
+                "MATCH (r:Race {raceId: row.raceId}) "
+                "MATCH (d:Driver {driverId: row.driverId}) "
+                "MERGE (p)-[:FOR_RACE]->(r) "
+                "MERGE (p)-[:BY_DRIVER]->(d)",
+                links)
 
 
 def main():
