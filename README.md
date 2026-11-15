@@ -1,31 +1,31 @@
-# Formula 1 Podium Prediction Companion
- 
-ACL course project (GUC). The goal is to predict whether a driver finishes on the podium (top 3), using information available **after qualifying and before the race**.
- 
-## Dataset
-[Formula 1 World Championship (1950–2024)](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020): 14 tables (races, results, qualifying, lap times, pit stops, standings, drivers, constructors, circuits, ...).
- 
-**Target:** `podium = positionOrder <= 3`, one row per (raceId, driverId).
- 
-## Milestone 1 – Data Cleaning ✅
-- Converted placeholders (`\N`, empty) to NaN and fixed data types in all 14 tables.
-- Checked primary and foreign keys and removed duplicate records.
-- Removed the Indianapolis 500 races, non-starters and duplicate driver–race rows.
-- Fixed invalid values (an impossible Q1 time, wrong pit-stop numbers).
-- Labelled missing values (structural / unknown) and every column's leakage status.
-- Compared the data before and after cleaning (EDA) and saved the clean tables as parquet.
-| | Before | After |
-|---|---|---|
-| Result rows | 26,759 | 24,566 |
-| Races | 1,125 | 1,114 |
- 
+# Milestone 2: Formula 1 Knowledge Graph (Neo4j)
 
+## Submitted files
+- `Create_kg.py`: builds the graph from the 9 CSV files in this folder
+- `config.txt`: Neo4j credentials (`URI`, `USERNAME`, `PASSWORD`); not in git, copy `config.example.txt`
+- `queries.txt`: the 5 verification queries, generated from `queries/` (do not edit by hand)
 
-## How To Run
+## Layout
+| Path | What it is |
+| --- | --- |
+| `Create_kg.py` | loader: constraints, entity nodes, then Result, Qualifying and PitStop facts |
+| `*.csv` | the 9 dataset tables (must stay next to `Create_kg.py`) |
+| `queries/q1.cypher` ... `q5.cypher` | one query per file, the only place queries are edited |
+| `queries.txt` | built from `queries/` by `tools/build_queries.py` |
+| `tools/check.py` | checks the built graph: counts, types, links, constraints, `--rerun` for duplicates |
+| `tools/verify_queries.py` | runs the 5 queries plus 11 unseen-style queries and compares them with pandas |
+| `tools/expected_answers.txt` | the pandas answers (`python tools/verify_queries.py --expected`) |
+| `tools/check_entities.cypher` | quick manual checks to paste into Neo4j Query |
 
-1. Select a kernel, then chose the enviroment .venv-duplicate
-2. Run pip install -r requirements.txt
-3. Run pip install ipykernel
-4. Run main.ipynb
+## Run (from this folder)
+```bash
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+cp config.example.txt config.txt            # then set your password
+python Create_kg.py                         # builds the graph (about 1 minute)
+python tools/check.py --rerun               # must end with "all ... checks passed"
+python tools/verify_queries.py              # must end with "16 of 16 queries agree"
+python tools/build_queries.py               # after editing anything in queries/
+```
 
-The models were already computed in /results
+Expected graph: 51,113 nodes and 163,510 relationships.
