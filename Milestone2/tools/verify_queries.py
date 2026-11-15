@@ -9,8 +9,8 @@ For every query below there is a Cypher version (run on Neo4j) and an independen
 If Cypher and pandas agree on questions the graph was not built for, the graph generalizes.
 
 Usage:
-  python verify_queries.py             # needs Neo4j (config.txt) and the built graph
-  python verify_queries.py --expected  # no database: print the pandas answers only
+  python tools/verify_queries.py             # needs Neo4j (config.txt) and the built graph
+  python tools/verify_queries.py --expected  # no database: print the pandas answers only
 """
 import argparse
 import os
@@ -20,7 +20,8 @@ from decimal import ROUND_HALF_UP, Decimal
 
 import pandas as pd
 
-HERE = os.path.dirname(os.path.abspath(__file__))
+TOOLS = os.path.dirname(os.path.abspath(__file__))
+HERE = os.path.dirname(TOOLS)  # project root (this file is in tools/)
 
 
 # --------------------------------------------------------------------------------------------
@@ -333,7 +334,7 @@ def main():
         print_expected(t)
         return
 
-    sys.path.insert(0, HERE)
+    sys.path.insert(0, TOOLS)
     from check import read_config
     from neo4j import GraphDatabase
 

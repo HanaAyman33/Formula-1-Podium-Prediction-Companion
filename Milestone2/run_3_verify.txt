@@ -1,0 +1,22 @@
+Part A: the 5 submitted queries (queries.txt) vs pandas
+[PASS] Query 1 (21 rows)
+[PASS] Query 2 (11 rows)
+[PASS] Query 3 (1 rows)
+[PASS] Query 4 (106 rows)
+[PASS] Query 5 (1 rows)
+
+Part B: unseen-style queries vs pandas
+[PASS] Wins per constructor, 2008 (5 rows)
+[PASS] Pit stops per race, 2023 (22 rows)
+[PASS] Drivers born after 1995 (date comparison) (19 rows)
+[PASS] Five fastest race laps at Monza (5 rows)
+[PASS] Q3 times, 2021 Abu Dhabi GP (q3 left out when empty) (10 rows)
+[PASS] Age at first race (duration.between on dates) (4 rows)
+[PASS] Races per season via IN_SEASON, and Race.year agrees (10 rows)
+[PASS] Races before 2000-01-01 (1 rows)
+[PASS] Unclassified results in 2021 (position IS NULL) (1 rows)
+[PASS] Average pit-stop time per constructor, 2021 (PitStop joined to Result) (10 rows)
+[PASS] Pole positions converted to wins, 2019 (1 rows)
+[PASS] Last race of 2023 (1 rows)
+
+17 of 17 queries agree with pandas

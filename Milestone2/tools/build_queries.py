@@ -4,13 +4,13 @@ Each file must start with its own header line, exactly "//N. Query N". The outpu
 UTF-8 without a BOM, with LF line endings and one blank line between queries, so the grader's
 parser sees the same text on every operating system.
 
-Usage: python build_queries.py
+Usage: python tools/build_queries.py
 """
 import os
 import re
 import sys
 
-HERE = os.path.dirname(os.path.abspath(__file__))
+HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # project root (this file is in tools/)
 N_QUERIES = 5
 
 

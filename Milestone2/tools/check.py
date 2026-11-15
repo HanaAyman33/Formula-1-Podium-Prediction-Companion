@@ -16,9 +16,9 @@ reuse the loader's helpers), so a bug in a loader cannot hide itself. Checks:
   8. with --rerun: runs Create_kg.py a second time and confirms that nothing changed
 
 Usage:
-  python check.py            # checks 1-7
-  python check.py --rerun    # checks 1-7, then a second build, then the counts again
-  python check.py --offline  # no database: checks what the loaders WOULD send, against the CSVs
+  python tools/check.py            # checks 1-7
+  python tools/check.py --rerun    # checks 1-7, then a second build, then the counts again
+  python tools/check.py --offline  # no database: checks what the loaders WOULD send, against the CSVs
 
 Exit code 0 means every check passed.
 """
@@ -32,7 +32,7 @@ from datetime import date
 import neo4j.time
 from neo4j import GraphDatabase
 
-HERE = os.path.dirname(os.path.abspath(__file__))
+HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # project root (this file is in tools/)
 
 EXPECTED_NODES = 51113
 EXPECTED_RELS = 163510
