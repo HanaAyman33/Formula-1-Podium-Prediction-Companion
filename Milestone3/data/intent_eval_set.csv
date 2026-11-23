@@ -1,0 +1,71 @@
+question,intent
+Tell me Lando Norris's points tally for 2024,driver_stats
+How many Grands Prix did Nico Rosberg win across his whole career?,driver_stats
+Where does Esteban Ocon usually end up at the Hungaroring on average?,driver_stats
+Count of podium appearances by Valtteri Bottas in 2021,driver_stats
+What did Daniel Ricciardo score in 2014?,driver_stats
+Number of wins for Mika Hakkinen in 1998,driver_stats
+How has Lewis Hamilton performed at Silverstone over the years?,driver_stats
+What was the redbull points haul in 2023?,constructor_stats
+Proportion of Ferrari entries that finished between 2010 and 2013,constructor_stats
+How many times did a Williams car fail to finish in 2017?,constructor_stats
+Give me the win count for mercedes amg in 2016,constructor_stats
+Did Haas score many points in 2018?,constructor_stats
+Classified finish rate of Force India 2014 to 2018,constructor_stats
+How many podiums did McLaren collect in 2012?,constructor_stats
+Between Max Verstappen and Daniel Ricciardo who finished in front more times?,head_to_head
+Gasly versus Tsunoda in the races they shared,head_to_head
+Did Button or Barrichello come out ahead more often at Brawn?,head_to_head
+Who won the qualifying duel Ocon or Perez at Force India?,head_to_head
+Hamilton against Alonso when they were McLaren teammates,head_to_head
+Pit Sainz against Norris: who had more finishes ahead?,head_to_head
+Which of Massa and Raikkonen finished higher more often at Ferrari?,head_to_head
+Which driver took the chequered flag first at the 2011 Canadian Grand Prix?,race_result
+Who stood on the podium after the 2017 Azerbaijan GP?,race_result
+List the first five finishers of the 2021 Dutch Grand Prix,race_result
+Who claimed the fastest lap in the 2019 Mexican Grand Prix?,race_result
+Who was runner-up at the 2014 Russian Grand Prix?,race_result
+Tell me the winner of the 2020 Styrian GP,race_result
+Who finished third in the 2018 Italian Grand Prix?,race_result
+Which country is Sepang in?,circuit_info
+How many races has the Red Bull Ring staged?,circuit_info
+Who holds the record for most victories at Interlagos?,circuit_info
+In what year was the final Grand Prix at Magny-Cours?,circuit_info
+Tell me where Losail is,circuit_info
+How many editions of a Grand Prix took place at Kyalami?,circuit_info
+Which constructor has the most wins at Silverstone?,circuit_info
+How many poles did Charles Leclerc secure in 2019?,qualifying
+Which driver started from the front of the grid at the 2016 Malaysian Grand Prix?,qualifying
+How many times did Yuki Tsunoda make it into Q3 in 2023?,qualifying
+Who climbed the most places at the 2023 Brazilian GP compared to where they started?,qualifying
+Where did Hamilton line up on the grid for the 2021 Saudi Arabian Grand Prix?,qualifying
+Total pole positions for Sebastian Vettel in 2013,qualifying
+Who was quickest in qualifying for the 2022 Emilia Romagna GP?,qualifying
+What was the shortest pit stop of the 2022 Dutch Grand Prix?,pit_stops
+How many times did Leclerc visit the pits in 2022?,pit_stops
+Mean number of pit visits per driver at the 2021 Hungarian GP,pit_stops
+Which driver spent the least time stationary at the 2019 Brazilian Grand Prix?,pit_stops
+How many stops did Norris make during the 2024 Monaco GP?,pit_stops
+In 2023 which Grand Prix saw the highest number of pit stops?,pit_stops
+How long was Perez's slowest pit stop at the 2021 Turkish Grand Prix?,pit_stops
+Who topped the points in the 2011 season?,season_history
+How many drivers lined up during the 2022 season?,season_history
+Who switched to another team between 2017 and 2018?,season_history
+What was the constructors order by points in 2019?,season_history
+Who took the drivers' title in 1994?,season_history
+Which team ended 2021 with the most points?,season_history
+Name the drivers who joined a new team from 2022 to 2023,season_history
+What is Max Verstappen's annual salary?,out_of_scope
+Which tyres did Mercedes choose at the 2021 Monza race?,out_of_scope
+Who won the sprint at Interlagos in 2021?,out_of_scope
+What's the forecast for rain in Melbourne this weekend?,out_of_scope
+Who won the 2018 FIFA World Cup?,out_of_scope
+Recommend a good book about space,out_of_scope
+What was Hamilton's lap time on lap 10 at Silverstone 2020?,out_of_scope
+Give the podium chances for Leclerc at the 2024 Monaco GP,predict_podium
+Is Piastri going to finish top three at the 2024 Hungarian Grand Prix?,predict_podium
+What does the model say about Hamilton at the 2024 British GP?,predict_podium
+Estimate the probability of a podium for Russell at Austria 2024,predict_podium
+Predict the result for Sainz starting third at the 2024 Mexico City Grand Prix,predict_podium
+Could Verstappen land on the podium at the 2024 Brazilian GP?,predict_podium
+How probable is a top 3 for Alonso at the 2024 Saudi Arabian Grand Prix?,predict_podium

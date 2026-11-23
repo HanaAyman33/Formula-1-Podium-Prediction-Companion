@@ -1,1 +1,0 @@
-python Create_kg.py  2.80s user 0.26s system 11% cpu 27.052 total

@@ -1,1 +1,0 @@
-wrote /Users/hanaaymanabdelhamid/Documents/GitHub/Formula-1-Podium-Prediction-Companion/Milestone2/queries.txt (5 queries, UTF-8, no BOM)
