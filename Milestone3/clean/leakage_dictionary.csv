@@ -1,0 +1,114 @@
+table,column,availability,note
+races,raceId,identifier,key
+races,year,pre-race,race calendar is known in advance
+races,round,pre-race,race calendar is known in advance
+races,circuitId,pre-race,race calendar is known in advance
+races,name,pre-race,race calendar is known in advance
+races,date,pre-race,race calendar is known in advance
+races,time,pre-race,race calendar is known in advance
+races,fp1_date,pre-race,race calendar is known in advance
+races,fp1_time,pre-race,race calendar is known in advance
+races,fp2_date,pre-race,race calendar is known in advance
+races,fp2_time,pre-race,race calendar is known in advance
+races,fp3_date,pre-race,race calendar is known in advance
+races,fp3_time,pre-race,race calendar is known in advance
+races,quali_date,pre-race,race calendar is known in advance
+races,quali_time,pre-race,race calendar is known in advance
+races,sprint_date,pre-race,race calendar is known in advance
+races,sprint_time,pre-race,race calendar is known in advance
+races,url,not used,reference link
+qualifying,qualifyId,identifier,key
+qualifying,raceId,pre-race,qualifying ends before the prediction cutoff
+qualifying,driverId,pre-race,qualifying ends before the prediction cutoff
+qualifying,constructorId,pre-race,qualifying ends before the prediction cutoff
+qualifying,number,pre-race,qualifying ends before the prediction cutoff
+qualifying,position,pre-race,qualifying ends before the prediction cutoff
+qualifying,q1,pre-race,qualifying ends before the prediction cutoff
+qualifying,q2,pre-race,qualifying ends before the prediction cutoff
+qualifying,q3,pre-race,qualifying ends before the prediction cutoff
+lap_times,raceId,post-race,recorded during the race; usable only from PREVIOUS races
+lap_times,driverId,post-race,recorded during the race; usable only from PREVIOUS races
+lap_times,lap,post-race,recorded during the race; usable only from PREVIOUS races
+lap_times,position,post-race,recorded during the race; usable only from PREVIOUS races
+lap_times,time,post-race,recorded during the race; usable only from PREVIOUS races
+lap_times,milliseconds,post-race,recorded during the race; usable only from PREVIOUS races
+pit_stops,raceId,post-race,recorded during the race; usable only from PREVIOUS races
+pit_stops,driverId,post-race,recorded during the race; usable only from PREVIOUS races
+pit_stops,stop,post-race,recorded during the race; usable only from PREVIOUS races
+pit_stops,lap,post-race,recorded during the race; usable only from PREVIOUS races
+pit_stops,time,post-race,recorded during the race; usable only from PREVIOUS races
+pit_stops,duration,post-race,recorded during the race; usable only from PREVIOUS races
+pit_stops,milliseconds,post-race,recorded during the race; usable only from PREVIOUS races
+driver_standings,driverStandingsId,identifier,key
+driver_standings,points,post-race,standings AFTER this race: shift to the previous round before using as a feature
+driver_standings,position,post-race,standings AFTER this race: shift to the previous round before using as a feature
+driver_standings,positionText,post-race,standings AFTER this race: shift to the previous round before using as a feature
+driver_standings,wins,post-race,standings AFTER this race: shift to the previous round before using as a feature
+constructor_standings,constructorStandingsId,identifier,key
+constructor_standings,points,post-race,standings AFTER this race: shift to the previous round before using as a feature
+constructor_standings,position,post-race,standings AFTER this race: shift to the previous round before using as a feature
+constructor_standings,positionText,post-race,standings AFTER this race: shift to the previous round before using as a feature
+constructor_standings,wins,post-race,standings AFTER this race: shift to the previous round before using as a feature
+constructor_results,constructorResultsId,identifier,key
+constructor_results,points,post-race,this race's constructor points: usable only from PREVIOUS races
+constructor_results,status,post-race,this race's constructor points: usable only from PREVIOUS races
+drivers,driverId,identifier,keys
+drivers,driverRef,identifier,keys
+drivers,dob,pre-race,static driver facts
+drivers,nationality,pre-race,static driver facts
+drivers,number,not used,labels / links
+drivers,code,not used,labels / links
+drivers,forename,not used,labels / links
+drivers,surname,not used,labels / links
+drivers,url,not used,labels / links
+circuits,circuitId,identifier,keys
+circuits,circuitRef,identifier,keys
+circuits,name,pre-race,static circuit facts
+circuits,location,pre-race,static circuit facts
+circuits,country,pre-race,static circuit facts
+circuits,lat,pre-race,static circuit facts
+circuits,lng,pre-race,static circuit facts
+circuits,alt,pre-race,static circuit facts
+circuits,url,not used,reference link
+constructors,constructorId,identifier,keys (renamed teams get new ids)
+constructors,constructorRef,identifier,keys (renamed teams get new ids)
+constructors,name,pre-race,static team facts
+constructors,nationality,pre-race,static team facts
+constructors,url,not used,reference link
+seasons,year,identifier,key
+seasons,url,not used,reference link
+status,status,post-race,why a race ended: post-race (used only for data-engineering Q3)
+results,resultId,identifier,keys
+results,raceId,identifier,keys
+results,driverId,identifier,keys
+results,constructorId,pre-race,known once the starting grid is set
+results,number,pre-race,known once the starting grid is set
+results,grid,pre-race,known once the starting grid is set
+results,positionOrder,target,podium label = positionOrder <= 3; never a feature
+results,position,post-race,outcome of this race: LEAKAGE if used for the same race
+results,positionText,post-race,outcome of this race: LEAKAGE if used for the same race
+results,points,post-race,outcome of this race: LEAKAGE if used for the same race
+results,laps,post-race,outcome of this race: LEAKAGE if used for the same race
+results,time,post-race,outcome of this race: LEAKAGE if used for the same race
+results,milliseconds,post-race,outcome of this race: LEAKAGE if used for the same race
+results,fastestLap,post-race,outcome of this race: LEAKAGE if used for the same race
+results,rank,post-race,outcome of this race: LEAKAGE if used for the same race
+results,fastestLapTime,post-race,outcome of this race: LEAKAGE if used for the same race
+results,fastestLapSpeed,post-race,outcome of this race: LEAKAGE if used for the same race
+results,statusId,post-race,outcome of this race: LEAKAGE if used for the same race
+sprint_results,resultId,identifier,keys
+sprint_results,raceId,identifier,keys
+sprint_results,driverId,identifier,keys
+sprint_results,constructorId,pre-race (team decision),"the sprint (2021+) runs BEFORE the main race, so its result is known at the cutoff"
+sprint_results,number,pre-race (team decision),"the sprint (2021+) runs BEFORE the main race, so its result is known at the cutoff"
+sprint_results,grid,pre-race (team decision),"the sprint (2021+) runs BEFORE the main race, so its result is known at the cutoff"
+sprint_results,position,pre-race (team decision),"the sprint (2021+) runs BEFORE the main race, so its result is known at the cutoff"
+sprint_results,positionText,pre-race (team decision),"the sprint (2021+) runs BEFORE the main race, so its result is known at the cutoff"
+sprint_results,positionOrder,pre-race (team decision),"the sprint (2021+) runs BEFORE the main race, so its result is known at the cutoff"
+sprint_results,points,pre-race (team decision),"the sprint (2021+) runs BEFORE the main race, so its result is known at the cutoff"
+sprint_results,laps,pre-race (team decision),"the sprint (2021+) runs BEFORE the main race, so its result is known at the cutoff"
+sprint_results,time,pre-race (team decision),"the sprint (2021+) runs BEFORE the main race, so its result is known at the cutoff"
+sprint_results,milliseconds,pre-race (team decision),"the sprint (2021+) runs BEFORE the main race, so its result is known at the cutoff"
+sprint_results,fastestLap,pre-race (team decision),"the sprint (2021+) runs BEFORE the main race, so its result is known at the cutoff"
+sprint_results,fastestLapTime,pre-race (team decision),"the sprint (2021+) runs BEFORE the main race, so its result is known at the cutoff"
+sprint_results,statusId,pre-race (team decision),"the sprint (2021+) runs BEFORE the main race, so its result is known at the cutoff"
